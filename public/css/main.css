@@ -1,0 +1,50 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  background-color: aliceblue;
+  width: 100vw;
+  height: auto;
+}
+
+.upload {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload form {
+  width: 300px;
+  height: auto;
+  padding: 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  height: 30px;
+  padding: 0 8px;
+  border: 0.5px dotted blue;
+}
+
+button {
+  height: 35px;
+  border: none;
+  outline: none;
+  background-color: blue;
+}

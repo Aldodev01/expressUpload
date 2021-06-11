@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>all users</title>
+  </head>
+  <body>
+    <main class="users"></main>
+
+    <script>
+      window.onload = function () {
+        fetch("http://localhost:8000/api/users", {
+          method: "GET",
+          mode: "cors",
+          headers: {
+            "Content-Type": "Application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            data.map((e) => {
+              let main = document.querySelector(".users");
+              main.innerHTML += `
+                <h3>${e.username}</h3>
+                <!-- <h5>${e.password}</h5> -->
+                <img src="/uploads/${e.avatar}" loading="lazy" width="200px"/>
+                <a href="/api/delete/${e.id}" >
+                  <button>delete</button> 
+                </a>
+                `;
+            });
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      };
+    </script>
+  </body>
+</html>

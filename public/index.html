@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <main class="upload">
+      <form
+        action="http://localhost:8000/api/upload"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <label for="username">username</label>
+        <input type="text" name="username" id="username" required />
+
+        <label for="password">password</label>
+        <input type="password" name="password" id="password" required />
+
+        <img src="" alt="" id="img-view" />
+
+        <label for="avatar">avatar</label>
+        <div class="avatar" for=""></div>
+        <input
+          type="file"
+          required
+          accept="image/jpg, image/jpeg, image/png"
+          name="avatar"
+          id="avatar"
+          onchange="handleView(event)"
+        />
+
+        <button type="submit">submit</button>
+      </form>
+    </main>
+  </body>
+
+  <script>
+    const handleView = (event) => {
+      const reader = new FileReader();
+      reader.onload = function () {
+        const img = document.getElementById("img-view");
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    };
+  </script>
+</html>
